@@ -1,0 +1,55 @@
+ASSIGNMENT 3: Vowel Recognition
+Pre requisite:
+I am attaching a sample file of 320 samples. For this, you should calculate Ai, Ri and Ci and then validate. 
+Required Ai, Ri and Ci values for the given sample file is also uploaded. 
+The output is obtained directly i.e. no Hamming window or DC shift is applied (only normalization is done).
+You can check the Ai, Ri and Ci values are correct or not.
+(Note: Here the sample Ci’s which are given in the file was calculated without inverting Ai’s value. 
+So, just for checking purpose whether your Ci’s are correct or not don’t invert Ai’s. 
+But in the assignment you have to invert Ai’s).
+Link : https%3A%2F%2Fiitgoffice-my.sharepoint.com%2F%3Au%3A%2Fg%2Fpersonal%2Fm_farhan_iitg_ac_in%2FEYFzmQDRbB1Apel1PtA54TABqXyTC1XtXTXshu3XqyubaA%3Fe%3DTdzClH%26fbclid%3DIwAR2lVbnYkb76RRvCe3Lt69ZwNGWAYJHviOhbXTE2YegXEaR0gwDrE6SMVSA&h=AT21cLbfdhFQfplnhftKgrg-q4LjI7Ytb-eXzF3RtbiTZLedt-AYu_kvwyHl1YTRYiAqy8YC8RjcWGYBE5lTEq5SVzWjdGTRzxxncbPurESR2TCQcYqbc9Qgvd42j-BmLsN9i04hvxsVcALK4sgo&__tn__=-UK-R&c[0]=AT04szUa6EbWx5-LcW-LH6pr8Ts6ZfiApb0-uPrQQt6tEN1y-ALpu5I3P7gdMo64REBzeydHXqMh1ZLLhQV3wGPgcmTiAb5678bMMo-96E2rFptMMa9QH1jpybatVa5iF5rkRjaoIRDEW40zzF4giiC-76cFPDh-f4umd0MSSoY75f4B6H6s4fsLVGRaXQl24QdI6tBIEwunNN7P3Q
+
+For vowel recognition assignment, you need to record several utterances of each vowel.
+Procedure to be followed:
+Record each vowel at least 20 times. 10 will be used for training and 10 for testing.
+Trim your vowel part manually through Cooledit, keeping little bit of silence before and after the vowel.
+Name your recording properly.
+Eg: RollNo_vowel_utteranceNo.txt
+All of you must follow this naming convention. So if your roll number is 214XXXXXX , vowel is u and utter count is 7. Use 214XXXXXX_u_7.txt
+....................................................................
+Steps for vowel recognition:
+Steps to generate reference file for 1 vowel
+1) Take first vowel recording, do DC shift and normalization
+2) Select 5 frames from the steady part.
+3) Compute Ri's, Ai's and Ci's of these frames and apply raised Sine window on Ci's
+4) Repeat the above steps for 9 more recording of the same vowel (so now you will have 50 rows of Ci values) 
+   and take the average of these recordings with respect to frames, i.e. frame 1 of all the 10 recordings 
+   should be considered for average and hence 10 rows will produce 1 row of Ci's. 
+   Similarly for all the frames, and so finally we will get 5 rows of Ci values (5 rows and 12 columns). 
+   Dump these values in a text file.
+5) Similarly you we will get text file for remaining 4 vowels and these 5 text files will be used 
+   as reference file for vowels. 
+Now for testing:
+1)Take input files for testing (10 test files per vowel) and pass these test files in a loop so that we can check out of 10 files how many are recognized correctly
+2) for each test file take 5 frames from stable part
+3) Calculate Tokhura's distance from each reference file.
+(Note : Since you have 5 stable frames and in each reference file you have 5 rows. So, Calculate the Tokhura’s distance with corresponding frames. 
+	Now, you have got 5 distances take the average that will give you final distance).
+Similarly do it with each reference file. 
+4) The one with minimum distance will be recognized as a vowel. 
+Please find the Tokhura weights:
+1.0, 3.0, 7.0, 13.0, 19.0, 22.0, 25.0, 33.0, 42.0, 50.0, 56.0, 61.0
+....................................................................
+Submission:
+Upload your vowel recognition assignment.
+Note:
+Upload Source code with all required files by 8th September 2021 EOD. (increased to 13th)
+Your project should contain a ReadMe file with proper instruction to execute your code.
+Your code should be properly commented and indented.
+Naming convention:
+yourRollNo_vowelRecognition.zip
+**Please follow name convention properly.
+10% bonus marks is there for early submission of source code.
+**Please don’t upload multiple times.
+Link to upload your assignment:
+https://l.facebook.com/l.php?u=https%3A%2F%2Fiitgoffice-my.sharepoint.com%2F%3Af%3A%2Fg%2Fpersonal%2Fm_farhan_iitg_ac_in%2FEoFs_i1m1v1AhJwEK6CCb0sBhQBI8bXf-MtIBHuy7uI6Cw%3Ffbclid%3DIwAR2boVPYNCJxbpufcP5x5LEr_iS2RPt08NE9DZmqzahsGjhINrSmmp2vfKc&h=AT3p_55xQhJx_ANFHJyhOABPq90Letn6A7_QS8eqRJaeZ24_g-ZZDRLSD1Tyi2Qo3nCI8TzulzKCocXMjRawZKAUzWjhjRdw_j95WOOO6RX9LaY0nEwkgI3iQQQy4MV0S6jnwCr3n6ZUG7d34q9n&__tn__=-UK-R&c[0]=AT04szUa6EbWx5-LcW-LH6pr8Ts6ZfiApb0-uPrQQt6tEN1y-ALpu5I3P7gdMo64REBzeydHXqMh1ZLLhQV3wGPgcmTiAb5678bMMo-96E2rFptMMa9QH1jpybatVa5iF5rkRjaoIRDEW40zzF4giiC-76cFPDh-f4umd0MSSoY75f4B6H6s4fsLVGRaXQl24QdI6tBIEwunNN7P3Q
